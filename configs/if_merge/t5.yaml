@@ -1,0 +1,28 @@
+# IF-Merge recipe for Flan-T5. Every Flan-T5 result in the paper uses this file;
+# ablations change one field with `--set section.field=value`.
+
+a:                         # activation statistics A_t (input side)
+  estimator: current       # measured at the current merged model
+
+g:                         # output-side statistics G_t (function-space feedback)
+  estimator: normalized_kl # per-prediction-position normalized teacher-student KL gradients
+  shrinkage: automatic     # Ledoit-Wolf; the vocabulary head is always fitted with G = I
+
+iteration:
+  rounds: 4                # at most R = 4 full-model updates
+  reestimate: both         # measure A and G again after every update
+  relative_update_tolerance: 1.0e-8
+
+solver:                    # diagonally preconditioned conjugate gradient
+  max_iterations: 100
+  relative_tolerance: 1.0e-6
+  warm_start: current      # start from the current weights
+
+selection:                 # step size by holdout teacher-student KL
+  scope: global            # one step size for the full model
+  steps: [0.0, 0.125, 0.25, 0.5, 1.0]
+
+calibration:               # unlabeled prompts per task
+  samples: 256             # |C_t|, statistics
+  holdout: 256             # |H_t|, step selection
+  seed: 0

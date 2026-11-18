@@ -1,0 +1,74 @@
+# Baseline settings for the Flan-T5 benchmark (eight GLUE tasks), as used in the paper.
+#
+# Protocol: every hyperparameter under `grid` is selected on the labeled selection split
+# (256 GLUE training examples per task that no calibration draw contains; highest
+# task-averaged score, ties go to the earlier grid point), and the selected model is
+# evaluated once on the GLUE validation split. All other entries are fixed.
+# `if-merge t5-baseline --value V` fixes the hyperparameter instead of selecting it.
+# `scale` is the scaling coefficient of the merged task vector: theta_0 + scale * tau.
+
+selection:
+  # If the best `scale` is the last grid point, the grid continues with the same spacing
+  # until the score fails to improve `patience` times in a row (or `limit` is reached).
+  patience: 3
+  limit: 10.0
+
+wa: {}                       # plain average of the expert weights, nothing to select
+
+ta:
+  grid:
+    scale: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+
+ties:
+  retained_percentage: 20.0  # share of each task vector kept by the trim step
+  grid:
+    scale: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+
+tsv_m:
+  grid: &spectral_grid
+    scale: [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
+
+wudi:
+  steps: 300                 # Adam steps per matrix
+  learning_rate: 1.0e-5
+  grid: *spectral_grid
+
+iso_c:
+  grid: *spectral_grid
+
+iso_cts:
+  common_fraction: 0.8       # share of the rank given to the common subspace
+  grid: *spectral_grid
+
+regmean:
+  samples: 256               # unlabeled calibration prompts per task (the C_t of IF-Merge)
+  grid:
+    off_diagonal_scale: [0.1, 0.3, 0.5, 0.7, 0.9, 1.0]
+
+regmeanpp:
+  samples: 256
+  grid:
+    off_diagonal_scale: [0.1, 0.3, 0.5, 0.7, 0.9, 0.95, 1.0]
+
+fisher:
+  samples: 256               # gradients are squared per prompt
+  floor: 1.0e-6              # added to every Fisher entry
+
+mats:
+  samples: 256
+  iterations: 100            # conjugate-gradient steps per weight matrix
+  ta_scale: selected         # start from Task Arithmetic with its selected scale
+
+adamerging:                  # the FusionBench configuration for Flan-T5
+  samples: 512               # unlabeled calibration prompts per task
+  steps: 1000
+  learning_rate: 1.0e-3
+  batch_size: 4              # prompts per task and step
+  initial_coefficient: 0.3
+
+featcal:
+  samples: 256
+  ta_scale: 0.3              # start from Task Arithmetic with this scale
+  interpolation: 0.6         # weight of the expert's features in the target input
+  ridge: 1.0e-5
+  anchor: 2.0                # ridge target: anchor * merged + (1 - anchor) * pretrained

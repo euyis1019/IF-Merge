@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "if-merge"
+version = "1.0.0"
+description = "IF-Merge: Model Merging with Iterative Function-Space Feedback"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+  "numpy>=1.26",
+  "open-clip-torch>=2.24",
+  "PyYAML>=6",
+  "torch>=2.2",
+]
+
+[project.optional-dependencies]
+data = ["huggingface-hub>=0.23", "Pillow>=10", "pyarrow>=15", "torchvision>=0.17"]
+baselines = ["scikit-learn>=1.4", "scipy>=1.11"]  # only ReForge needs these
+t5 = ["transformers==4.51.3", "tokenizers==0.21.4", "huggingface-hub>=0.23", "pyarrow>=15", "safetensors>=0.4", "scipy>=1.11", "sentencepiece"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+if-merge = "if_merge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+extend-exclude = ["figures"]  # the teaser script keeps its compact plotting style
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

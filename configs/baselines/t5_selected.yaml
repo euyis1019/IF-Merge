@@ -1,0 +1,39 @@
+# Hyperparameter values behind the paper's Flan-T5 numbers.
+#
+# selected:        value chosen on the labeled selection split, per method and seed of that split
+# fixed:           values passed with `--value`, without a selection
+# initializations: scale of the baseline that `if-merge t5 --init <id>` starts from
+
+base:
+  selected:
+    ta: {0: 0.25}
+    ties: {0: 0.3}
+    tsv_m: {0: 2, 1: 2, 2: 1.9}
+    wudi: {0: 0.8}
+    iso_c: {0: 2.6}
+    iso_cts: {0: 2.6}
+    regmean: {0: 0.9}
+    regmeanpp: {0: 0.9}
+  fixed:
+    ta: [0.3]
+    iso_c: [1.3]
+    regmean: [0.9]
+  initializations:
+    ta: 0.25          # selected
+    iso_c: 1.3        # fixed
+    iso_cts: 2.6      # selected
+
+large:
+  selected:
+    iso_cts: {0: 3.7}
+    tsv_m: {0: 1.4, 1: 1.2, 2: 1.1}
+  fixed:
+    ta: [0.3]
+    ties: [0.3]
+    iso_c: [1.3]
+    tsv_m: [1]
+    regmean: [0.9]
+  initializations:
+    ta: 0.3           # fixed
+    iso_c: 1.3        # fixed
+    iso_cts: 3.7      # selected

@@ -1,0 +1,85 @@
+# Baseline settings for the CLIP benchmark, as used in the paper.
+#
+# Protocol: every hyperparameter under `grid` is selected on the labeled validation split
+# (highest task-averaged accuracy; ties go to the earlier grid point), and the selected
+# model is evaluated once on the test split. All other entries are fixed.
+# `scale` is the scaling coefficient of the merged task vector: theta_0 + scale * tau.
+
+wa: {}                       # plain average of the expert weights, nothing to select
+
+ta:
+  grid:
+    scale: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+
+ties:
+  retained_percentage: 20.0  # share of each task vector kept by the trim step
+  grid:
+    scale: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+
+tsv_m:
+  grid: &spectral_grid
+    scale: [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
+
+wudi:
+  steps: 300                 # Adam steps per matrix
+  learning_rate: 1.0e-5
+  grid: *spectral_grid
+
+iso_c:
+  grid: *spectral_grid
+
+iso_cts:
+  common_fraction: 0.8       # share of the rank given to the common subspace
+  grid: *spectral_grid
+
+regmean:
+  samples: 256               # unlabeled calibration images per task
+  grid:
+    off_diagonal_scale: [0.1, 0.3, 0.5, 0.7, 0.9, 1.0]
+
+regmeanpp:
+  samples: 256
+  grid:
+    off_diagonal_scale: [0.1, 0.3, 0.5, 0.7, 0.9, 0.95, 1.0]
+
+fisher:
+  samples: 256
+  batch_size: 32             # gradients are squared per batch (FusionBench estimator)
+  floor: 1.0e-6              # added to every Fisher entry
+  normalize: true            # weight experts by the inverse norm of their Fisher
+
+mats:
+  samples: 256
+  iterations: 100            # conjugate-gradient steps per weight matrix
+  ta_scale: selected         # start from Task Arithmetic with its validation-selected scale
+
+adamerging:
+  samples: 512               # unlabeled calibration images per task
+  steps: 500
+  learning_rate: 1.0e-3
+  batch_size: 16             # images per task and step
+  initial_coefficient: 0.3
+
+# Post-hoc methods: applied to the merged task vector of an initialization, whose scaling
+# coefficient is selected jointly with the method's own hyperparameters.
+
+lines:
+  depth_ratio: 1.0           # beta / alpha: the last block is scaled twice as much as the first
+  grid:
+    scale: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75,
+            0.8, 0.85, 0.9, 0.95, 1.0, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5]
+
+svc:
+  grid:
+    strength: [0.1, 0.2, 0.5, 1.0]
+    scale: [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
+
+reforge:
+  samples: 128               # unlabeled calibration images per task
+  evaluations: 200           # validation evaluations spent by the Bayesian optimization
+  groups: 3                  # depth groups (shallow, middle, deep) with separate hyperparameters
+  bounds:                    # search ranges; the first three are per group
+    log_ridge: [-6.0, 2.0]
+    off_diagonal_scale: [0.0, 1.0]
+    output_scale: [0.5, 1.5]
+    anchor_scale: [0.0, 1.5]

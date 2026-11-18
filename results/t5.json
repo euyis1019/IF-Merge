@@ -1,0 +1,1949 @@
+{
+ "description": "Reference scores behind the Flan-T5 tables of the paper: GLUE validation, generated-answer accuracy (STS-B: 100 x Spearman correlation); `average` weights the eight tasks equally. `tables` names the paper tables a row appears in (by label); `command` reproduces the row. `value` is the hyperparameter of a baseline, selected on the labeled selection split or fixed with --value.",
+ "rows": [
+  {
+   "size": "base",
+   "method": "pretrained",
+   "average": 75.73515986017607,
+   "per_task": {
+    "cola": 69.12751677852349,
+    "mnli": 56.454406520631686,
+    "mrpc": 76.22549019607843,
+    "qnli": 88.44956983342486,
+    "qqp": 82.1197130843433,
+    "rte": 80.14440433212997,
+    "sst2": 91.1697247706422,
+    "stsb": 62.19045336563466
+   },
+   "tables": [
+    "t5-main",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-evaluate --size base --checkpoint pretrained"
+  },
+  {
+   "size": "base",
+   "method": "experts",
+   "average": 86.3676417834836,
+   "per_task": {
+    "cola": 74.97603068072867,
+    "mnli": 83.41314314824248,
+    "mrpc": 87.5,
+    "qnli": 91.48819330038441,
+    "qqp": 85.36977491961414,
+    "rte": 85.92057761732852,
+    "sst2": 93.57798165137615,
+    "stsb": 88.6954329501945
+   },
+   "tables": [
+    "t5-main",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-evaluate --size base --checkpoint experts"
+  },
+  {
+   "size": "base",
+   "method": "wa",
+   "seed": 0,
+   "average": 78.87840485368685,
+   "per_task": {
+    "cola": 69.12751677852349,
+    "mnli": 62.64900662251656,
+    "mrpc": 79.41176470588235,
+    "qnli": 89.80413692110562,
+    "qqp": 83.856047489488,
+    "rte": 81.2274368231047,
+    "sst2": 91.74311926605505,
+    "stsb": 73.20821022281889
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method wa"
+  },
+  {
+   "size": "base",
+   "method": "ta",
+   "seed": 0,
+   "value": 0.25,
+   "selected": true,
+   "average": 79.48870436286703,
+   "per_task": {
+    "cola": 69.79865771812081,
+    "mnli": 62.8222109016811,
+    "mrpc": 78.18627450980392,
+    "qnli": 90.20684605528098,
+    "qqp": 83.7744249319812,
+    "rte": 81.5884476534296,
+    "sst2": 92.20183486238533,
+    "stsb": 77.33093827025324
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method ta"
+  },
+  {
+   "size": "base",
+   "method": "ties",
+   "seed": 0,
+   "value": 0.3,
+   "selected": true,
+   "average": 80.00916449965807,
+   "per_task": {
+    "cola": 70.0862895493768,
+    "mnli": 66.24554253693327,
+    "mrpc": 78.43137254901961,
+    "qnli": 90.1153212520593,
+    "qqp": 83.62354687113529,
+    "rte": 81.5884476534296,
+    "sst2": 91.74311926605505,
+    "stsb": 78.23967631925561
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method ties"
+  },
+  {
+   "size": "base",
+   "method": "tsv_m",
+   "seed": 0,
+   "value": 2.0,
+   "selected": true,
+   "average": 83.55424312538548,
+   "per_task": {
+    "cola": 74.01725790987535,
+    "mnli": 81.22261844116149,
+    "mrpc": 80.1470588235294,
+    "qnli": 90.79260479589969,
+    "qqp": 83.44051446945338,
+    "rte": 79.42238267148015,
+    "sst2": 93.57798165137615,
+    "stsb": 85.81352624030816
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main",
+    "t5-matched-tasks",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method tsv_m"
+  },
+  {
+   "size": "base",
+   "method": "wudi",
+   "seed": 0,
+   "value": 0.8,
+   "selected": true,
+   "average": 83.42396424543436,
+   "per_task": {
+    "cola": 72.29146692233941,
+    "mnli": 82.02750891492613,
+    "mrpc": 79.90196078431373,
+    "qnli": 90.38989566172432,
+    "qqp": 83.14617858026219,
+    "rte": 79.78339350180505,
+    "sst2": 92.88990825688073,
+    "stsb": 86.9614013412233
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method wudi"
+  },
+  {
+   "size": "base",
+   "method": "iso_c",
+   "seed": 0,
+   "value": 2.6,
+   "selected": true,
+   "average": 81.48912541735132,
+   "per_task": {
+    "cola": 70.3739213806328,
+    "mnli": 71.237901171676,
+    "mrpc": 78.43137254901961,
+    "qnli": 90.82921471718836,
+    "qqp": 84.67474647538957,
+    "rte": 83.75451263537906,
+    "sst2": 93.57798165137615,
+    "stsb": 79.03335275814908
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method iso_c"
+  },
+  {
+   "size": "base",
+   "method": "iso_cts",
+   "seed": 0,
+   "value": 2.6,
+   "selected": true,
+   "average": 81.0294658384667,
+   "per_task": {
+    "cola": 70.18216682646212,
+    "mnli": 69.46510443199185,
+    "mrpc": 78.18627450980392,
+    "qnli": 90.66447007138935,
+    "qqp": 84.83551817956963,
+    "rte": 83.75451263537906,
+    "sst2": 93.23394495412845,
+    "stsb": 77.91373509900923
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method iso_cts"
+  },
+  {
+   "size": "base",
+   "method": "regmean",
+   "seed": 0,
+   "value": 0.9,
+   "selected": true,
+   "average": 83.80109444608075,
+   "per_task": {
+    "cola": 69.79865771812081,
+    "mnli": 83.32144676515537,
+    "mrpc": 79.65686274509804,
+    "qnli": 90.9024345597657,
+    "qqp": 84.51150136037596,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 85.70508456003013
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main",
+    "t5-matched-tasks",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method regmean"
+  },
+  {
+   "size": "base",
+   "method": "regmeanpp",
+   "seed": 0,
+   "value": 0.9,
+   "selected": true,
+   "average": 83.80543304860937,
+   "per_task": {
+    "cola": 69.51102588686481,
+    "mnli": 83.41314314824248,
+    "mrpc": 79.90196078431373,
+    "qnli": 90.99395936298737,
+    "qqp": 84.5263418253772,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 85.58426552098933
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method regmeanpp"
+  },
+  {
+   "size": "base",
+   "method": "ta",
+   "seed": 0,
+   "value": 0.3,
+   "selected": false,
+   "average": 78.89205843058306,
+   "per_task": {
+    "cola": 70.46979865771812,
+    "mnli": 57.768721344880284,
+    "mrpc": 78.43137254901961,
+    "qnli": 90.20684605528098,
+    "qqp": 83.62107346030176,
+    "rte": 80.50541516245487,
+    "sst2": 92.31651376146789,
+    "stsb": 77.81672645354095
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method ta --value 0.3"
+  },
+  {
+   "size": "base",
+   "method": "iso_c",
+   "seed": 0,
+   "value": 1.3,
+   "selected": false,
+   "average": 79.64478618764153,
+   "per_task": {
+    "cola": 69.51102588686481,
+    "mnli": 67.27457972491085,
+    "mrpc": 78.43137254901961,
+    "qnli": 90.17023613399232,
+    "qqp": 84.38288399703191,
+    "rte": 81.2274368231047,
+    "sst2": 92.20183486238533,
+    "stsb": 73.95891952382276
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method iso_c --value 1.3"
+  },
+  {
+   "size": "base",
+   "method": "fisher",
+   "seed": 0,
+   "average": 79.64062798569253,
+   "per_task": {
+    "cola": 69.31927133269416,
+    "mnli": 68.63983698420785,
+    "mrpc": 80.1470588235294,
+    "qnli": 89.6393922753066,
+    "qqp": 83.7051694286421,
+    "rte": 80.50541516245487,
+    "sst2": 91.85779816513761,
+    "stsb": 73.31108171356763
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method fisher"
+  },
+  {
+   "size": "base",
+   "method": "mats",
+   "seed": 0,
+   "average": 83.81264334109605,
+   "per_task": {
+    "cola": 69.99041227229147,
+    "mnli": 83.47427407030057,
+    "mrpc": 79.90196078431373,
+    "qnli": 91.06717920556471,
+    "qqp": 84.51150136037596,
+    "rte": 82.67148014440433,
+    "sst2": 93.23394495412845,
+    "stsb": 85.65039393738931
+   },
+   "tables": [
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5-baseline --size base --method mats"
+  },
+  {
+   "size": "base",
+   "method": "adamerging",
+   "seed": 0,
+   "average": 79.71143021975003,
+   "per_task": {
+    "cola": 69.70278044103547,
+    "mnli": 76.94345389709628,
+    "mrpc": 79.90196078431373,
+    "qnli": 89.8407468423943,
+    "qqp": 81.7808558001484,
+    "rte": 79.06137184115524,
+    "sst2": 91.28440366972477,
+    "stsb": 69.17586848213205
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-matched-tasks",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method adamerging"
+  },
+  {
+   "size": "base",
+   "method": "tsv_m",
+   "seed": 1,
+   "value": 2.0,
+   "selected": true,
+   "average": 83.55424312538548,
+   "per_task": {
+    "cola": 74.01725790987535,
+    "mnli": 81.22261844116149,
+    "mrpc": 80.1470588235294,
+    "qnli": 90.79260479589969,
+    "qqp": 83.44051446945338,
+    "rte": 79.42238267148015,
+    "sst2": 93.57798165137615,
+    "stsb": 85.81352624030816
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method tsv_m --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "regmean",
+   "seed": 1,
+   "value": 0.9,
+   "selected": false,
+   "average": 83.79700150757543,
+   "per_task": {
+    "cola": 69.79865771812081,
+    "mnli": 83.08711156393275,
+    "mrpc": 79.90196078431373,
+    "qnli": 90.92073952041004,
+    "qqp": 84.50160771704181,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 85.65316689668425
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method regmean --seed 1 --value 0.9"
+  },
+  {
+   "size": "base",
+   "method": "adamerging",
+   "seed": 1,
+   "average": 79.54706660307673,
+   "per_task": {
+    "cola": 69.60690316395015,
+    "mnli": 77.34080489047376,
+    "mrpc": 79.65686274509804,
+    "qnli": 89.8956617243273,
+    "qqp": 81.92431362849369,
+    "rte": 79.06137184115524,
+    "sst2": 91.05504587155963,
+    "stsb": 67.83556895955597
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method adamerging --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "tsv_m",
+   "seed": 2,
+   "value": 1.9,
+   "selected": true,
+   "average": 83.52374522290147,
+   "per_task": {
+    "cola": 73.72962607861936,
+    "mnli": 81.78298522669384,
+    "mrpc": 79.65686274509804,
+    "qnli": 90.77429983525535,
+    "qqp": 83.64580756863715,
+    "rte": 79.42238267148015,
+    "sst2": 93.23394495412845,
+    "stsb": 85.9440527032995
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method tsv_m --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "regmean",
+   "seed": 2,
+   "value": 0.9,
+   "selected": false,
+   "average": 83.86933040483669,
+   "per_task": {
+    "cola": 69.79865771812081,
+    "mnli": 83.32144676515537,
+    "mrpc": 80.1470588235294,
+    "qnli": 90.93904448105437,
+    "qqp": 84.54860252287905,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 85.68706506785453
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method regmean --seed 2 --value 0.9"
+  },
+  {
+   "size": "base",
+   "method": "adamerging",
+   "seed": 2,
+   "average": 79.70821409533451,
+   "per_task": {
+    "cola": 69.79865771812081,
+    "mnli": 76.81100356597045,
+    "mrpc": 79.65686274509804,
+    "qnli": 89.96888156690463,
+    "qqp": 81.77343556764778,
+    "rte": 79.06137184115524,
+    "sst2": 91.1697247706422,
+    "stsb": 69.425774987137
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size base --method adamerging --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "featcal",
+   "seed": 0,
+   "average": 84.55565558922835,
+   "per_task": {
+    "cola": 71.90795781399808,
+    "mnli": 82.37391747325522,
+    "mrpc": 82.3529411764706,
+    "qnli": 90.88412959912137,
+    "qqp": 84.81078407123424,
+    "rte": 83.75451263537906,
+    "sst2": 93.11926605504587,
+    "stsb": 87.24173588932236
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method featcal"
+  },
+  {
+   "size": "base",
+   "method": "featcal",
+   "seed": 1,
+   "average": 84.97701934577134,
+   "per_task": {
+    "cola": 72.09971236816874,
+    "mnli": 82.46561385634233,
+    "mrpc": 85.04901960784314,
+    "qnli": 90.97565440234304,
+    "qqp": 84.80089042790007,
+    "rte": 84.11552346570397,
+    "sst2": 92.88990825688073,
+    "stsb": 87.41983238098875
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method featcal --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "featcal",
+   "seed": 2,
+   "average": 85.08038868925429,
+   "per_task": {
+    "cola": 72.38734419942473,
+    "mnli": 82.50636780438104,
+    "mrpc": 84.55882352941177,
+    "qnli": 91.10378912685337,
+    "qqp": 84.86767252040563,
+    "rte": 84.83754512635379,
+    "sst2": 93.11926605504587,
+    "stsb": 87.26230115215807
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method featcal --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "featcal",
+   "seed": 3,
+   "average": 84.89878242463188,
+   "per_task": {
+    "cola": 72.00383509108342,
+    "mnli": 82.66938359653591,
+    "mrpc": 84.31372549019608,
+    "qnli": 90.88412959912137,
+    "qqp": 84.69700717289142,
+    "rte": 84.47653429602889,
+    "sst2": 92.88990825688073,
+    "stsb": 87.25573589431725
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method featcal --seed 3"
+  },
+  {
+   "size": "base",
+   "method": "featcal",
+   "seed": 4,
+   "average": 84.67149209903752,
+   "per_task": {
+    "cola": 71.90795781399808,
+    "mnli": 82.46561385634233,
+    "mrpc": 82.84313725490196,
+    "qnli": 90.86582463847702,
+    "qqp": 84.81078407123424,
+    "rte": 83.75451263537906,
+    "sst2": 93.0045871559633,
+    "stsb": 87.7195193660042
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5-baseline --size base --method featcal --seed 4"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "wa",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.7766682855419745,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.044845064550888866,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.023385522519115524,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.02287054346738925,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.021942807502071577,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.82532411337358,
+   "per_task": {
+    "cola": 71.42857142857143,
+    "mnli": 83.37238920020377,
+    "mrpc": 84.55882352941177,
+    "qnli": 91.15870400878639,
+    "qqp": 84.7464753895622,
+    "rte": 82.67148014440433,
+    "sst2": 93.23394495412845,
+    "stsb": 87.43220425192033
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5 --size base --init wa"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 1,
+   "initialization": "wa",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.7665320976743086,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.038652001034572565,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.02055181048518011,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.019746476652947584,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.019123307684291328,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.87070941296064,
+   "per_task": {
+    "cola": 72.00383509108342,
+    "mnli": 83.38257768721346,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.19531393007505,
+    "qqp": 84.78110314123175,
+    "rte": 83.39350180505416,
+    "sst2": 93.0045871559633,
+    "stsb": 87.13612904208351
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init wa --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 2,
+   "initialization": "wa",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.770227140395249,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.039440258085045664,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.018197673642338465,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.017701425229172753,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.01684908332744004,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.89347153909739,
+   "per_task": {
+    "cola": 72.00383509108342,
+    "mnli": 83.39276617422313,
+    "mrpc": 84.31372549019608,
+    "qnli": 91.15870400878639,
+    "qqp": 84.83799159040316,
+    "rte": 82.67148014440433,
+    "sst2": 93.46330275229357,
+    "stsb": 87.30596706138908
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init wa --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "ta",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.5184875351792703,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.034945919486253224,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.02348693406421141,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.02282429472817994,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.022090902070245055,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.79253108802878,
+   "per_task": {
+    "cola": 71.3326941514861,
+    "mnli": 83.51502801833928,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.23192385136372,
+    "qqp": 84.70690081622557,
+    "rte": 83.03249097472924,
+    "sst2": 93.11926605504587,
+    "stsb": 87.33331738606014
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5 --size base --init ta"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 1,
+   "initialization": "ta",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.5070503921392052,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.02965577205463195,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.02052789340659658,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.019576068164130867,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.019316095579000263,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.89129850418323,
+   "per_task": {
+    "cola": 71.81208053691275,
+    "mnli": 83.56597045338768,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.19531393007505,
+    "qqp": 84.73410833539451,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 87.24151946661539
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init ta --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 2,
+   "initialization": "ta",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.5074984172319592,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.030078210185064357,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.018184456112456768,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.017770798828723608,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.016888706483831145,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.84814901342027,
+   "per_task": {
+    "cola": 72.00383509108342,
+    "mnli": 83.49465104431992,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.14039904814204,
+    "qqp": 84.77615631956468,
+    "rte": 82.67148014440433,
+    "sst2": 93.46330275229357,
+    "stsb": 87.16674025657385
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init ta --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "iso_cts",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.2977554215164861,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.025242402910189282,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.02118418151042777,
+     "step_size": 0.5
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.020623564715435028,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.020619126150599628,
+     "step_size": 0.125
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.72465876635854,
+   "per_task": {
+    "cola": 71.3326941514861,
+    "mnli": 83.33163525216506,
+    "mrpc": 83.33333333333333,
+    "qnli": 91.12209408749771,
+    "qqp": 84.82315112540194,
+    "rte": 83.75451263537906,
+    "sst2": 93.11926605504587,
+    "stsb": 86.98058349055933
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds",
+    "t5-matched-tasks"
+   ],
+   "command": "if-merge t5 --size base --init iso_cts"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 1,
+   "initialization": "iso_cts",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.2936493626122848,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.020737943105764673,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.017171464681515793,
+     "step_size": 0.5
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.01700778776255161,
+     "step_size": 0.25
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.01700778776255161,
+     "step_size": 0.0
+    }
+   ],
+   "selected_round": 3,
+   "average": 84.76672147872961,
+   "per_task": {
+    "cola": 71.52444870565677,
+    "mnli": 83.38257768721346,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.12209408749771,
+    "qqp": 84.89488003957457,
+    "rte": 84.11552346570397,
+    "sst2": 93.11926605504587,
+    "stsb": 85.90635433816418
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init iso_cts --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 2,
+   "initialization": "iso_cts",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.2950412088973173,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.02128757436646539,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.016229999215307468,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.01577552962357574,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.01571065742712237,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.8739264941672,
+   "per_task": {
+    "cola": 71.90795781399808,
+    "mnli": 83.34182373917473,
+    "mrpc": 84.31372549019608,
+    "qnli": 91.26853377265239,
+    "qqp": 84.87509275290626,
+    "rte": 82.67148014440433,
+    "sst2": 93.46330275229357,
+    "stsb": 87.14949548771214
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-calibration-seeds"
+   ],
+   "command": "if-merge t5 --size base --init iso_cts --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6240996163124696,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.035779332107587845,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.02200412159789949,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.021703531980520826,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.021325823070521555,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.8455535396478,
+   "per_task": {
+    "cola": 71.42857142857143,
+    "mnli": 83.35201222618441,
+    "mrpc": 84.55882352941177,
+    "qnli": 91.21361889071939,
+    "qqp": 84.76131585456345,
+    "rte": 82.67148014440433,
+    "sst2": 93.23394495412845,
+    "stsb": 87.5446612891992
+   },
+   "tables": [
+    "t5-main",
+    "t5-interpolation"
+   ],
+   "command": "if-merge t5 --size base --init iso_c"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 1,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.615285236666478,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.03074859126597486,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.018920075887251416,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.018504239192095866,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.01836024363704836,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.92465767836862,
+   "per_task": {
+    "cola": 72.09971236816874,
+    "mnli": 83.32144676515537,
+    "mrpc": 84.31372549019608,
+    "qnli": 91.19531393007505,
+    "qqp": 84.80336383873362,
+    "rte": 83.39350180505416,
+    "sst2": 93.0045871559633,
+    "stsb": 87.26561007360263
+   },
+   "tables": [
+    "t5-main",
+    "t5-interpolation"
+   ],
+   "command": "if-merge t5 --size base --init iso_c --seed 1"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 2,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6189284344484295,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.03125806665328306,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.016878788315636148,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.0166021539539372,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.016263635731660158,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.91284235744656,
+   "per_task": {
+    "cola": 71.90795781399808,
+    "mnli": 83.39276617422313,
+    "mrpc": 84.31372549019608,
+    "qnli": 91.19531393007505,
+    "qqp": 84.83057135790254,
+    "rte": 83.03249097472924,
+    "sst2": 93.34862385321101,
+    "stsb": 87.28128926523743
+   },
+   "tables": [
+    "t5-main",
+    "t5-interpolation"
+   ],
+   "command": "if-merge t5 --size base --init iso_c --seed 2"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 3,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.622946555802611,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.032791532712807686,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.019354680354829762,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.018769390435816706,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.018273410013092597,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.92044530138136,
+   "per_task": {
+    "cola": 71.90795781399808,
+    "mnli": 83.29088130412634,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.25022881200806,
+    "qqp": 84.82562453623547,
+    "rte": 83.39350180505416,
+    "sst2": 93.34862385321101,
+    "stsb": 87.27811683543749
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5 --size base --init iso_c --seed 3"
+  },
+  {
+   "size": "base",
+   "method": "if_merge",
+   "seed": 4,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6172306933292422,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.029559584532136536,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.016410578459928386,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.016013384584449456,
+     "step_size": 0.5
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.015661660094526558,
+     "step_size": 1.0
+    }
+   ],
+   "selected_round": 4,
+   "average": 84.97431848838936,
+   "per_task": {
+    "cola": 72.19558964525407,
+    "mnli": 83.53540499235864,
+    "mrpc": 84.06862745098039,
+    "qnli": 91.23192385136372,
+    "qqp": 84.74152856789513,
+    "rte": 83.39350180505416,
+    "sst2": 93.11926605504587,
+    "stsb": 87.50870553916302
+   },
+   "tables": [
+    "t5-main"
+   ],
+   "command": "if-merge t5 --size base --init iso_c --seed 4"
+  },
+  {
+   "size": "large",
+   "method": "wa",
+   "seed": 0,
+   "average": 86.52749910740592,
+   "per_task": {
+    "cola": 74.59252157238734,
+    "mnli": 84.28935303107488,
+    "mrpc": 84.06862745098039,
+    "qnli": 92.8061504667765,
+    "qqp": 86.27751669552313,
+    "rte": 87.36462093862816,
+    "sst2": 94.83944954128441,
+    "stsb": 87.98175316259254
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method wa"
+  },
+  {
+   "size": "large",
+   "method": "ta",
+   "seed": 0,
+   "value": 0.3,
+   "selected": false,
+   "average": 87.30260143269213,
+   "per_task": {
+    "cola": 76.89357622243529,
+    "mnli": 85.44065206316861,
+    "mrpc": 85.29411764705883,
+    "qnli": 93.9227530660809,
+    "qqp": 85.84466979965373,
+    "rte": 88.08664259927798,
+    "sst2": 95.18348623853211,
+    "stsb": 87.75491382532951
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method ta --value 0.3"
+  },
+  {
+   "size": "large",
+   "method": "ties",
+   "seed": 0,
+   "value": 0.3,
+   "selected": false,
+   "average": 86.16259832837974,
+   "per_task": {
+    "cola": 77.46883988494727,
+    "mnli": 79.82679572083545,
+    "mrpc": 85.29411764705883,
+    "qnli": 93.79461834157057,
+    "qqp": 85.51323274795944,
+    "rte": 87.72563176895306,
+    "sst2": 95.18348623853211,
+    "stsb": 84.49406427718118
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method ties --value 0.3"
+  },
+  {
+   "size": "large",
+   "method": "iso_c",
+   "seed": 0,
+   "value": 1.3,
+   "selected": false,
+   "average": 82.42192104402464,
+   "per_task": {
+    "cola": 73.92138063279003,
+    "mnli": 58.54304635761589,
+    "mrpc": 82.3529411764706,
+    "qnli": 91.19531393007505,
+    "qqp": 85.53054662379421,
+    "rte": 85.92057761732852,
+    "sst2": 94.38073394495413,
+    "stsb": 87.53082806916872
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method iso_c --value 1.3"
+  },
+  {
+   "size": "large",
+   "method": "tsv_m",
+   "seed": 0,
+   "value": 1.0,
+   "selected": false,
+   "average": 88.09297673812956,
+   "per_task": {
+    "cola": 77.94822627037392,
+    "mnli": 88.37493632195618,
+    "mrpc": 86.27450980392157,
+    "qnli": 93.8678381841479,
+    "qqp": 86.04996289883749,
+    "rte": 87.72563176895306,
+    "sst2": 95.29816513761467,
+    "stsb": 89.20454351923158
+   },
+   "tables": [
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method tsv_m --value 1"
+  },
+  {
+   "size": "large",
+   "method": "regmean",
+   "seed": 0,
+   "value": 0.9,
+   "selected": false,
+   "average": 88.23626786325056,
+   "per_task": {
+    "cola": 75.83892617449665,
+    "mnli": 88.68059093224656,
+    "mrpc": 86.51960784313725,
+    "qnli": 93.8678381841479,
+    "qqp": 86.80435320306702,
+    "rte": 88.8086642599278,
+    "sst2": 94.95412844036697,
+    "stsb": 90.41603386861439
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-large-tasks",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method regmean --value 0.9"
+  },
+  {
+   "size": "large",
+   "method": "featcal",
+   "seed": 0,
+   "average": 89.06066436199751,
+   "per_task": {
+    "cola": 78.71524448705657,
+    "mnli": 88.04890473764645,
+    "mrpc": 87.99019607843137,
+    "qnli": 94.16071755445726,
+    "qqp": 86.89834281474153,
+    "rte": 90.25270758122744,
+    "sst2": 95.52752293577981,
+    "stsb": 90.89167870663964
+   },
+   "tables": [
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5-baseline --size large --method featcal"
+  },
+  {
+   "size": "large",
+   "method": "iso_cts",
+   "seed": 0,
+   "value": 3.7,
+   "selected": true,
+   "average": 84.12585505179096,
+   "per_task": {
+    "cola": 73.72962607861936,
+    "mnli": 71.2888436067244,
+    "mrpc": 82.84313725490196,
+    "qnli": 91.48819330038441,
+    "qqp": 85.63690328963641,
+    "rte": 85.92057761732852,
+    "sst2": 94.4954128440367,
+    "stsb": 87.60414642269612
+   },
+   "tables": [
+    "t5-large (main text)"
+   ],
+   "command": "if-merge t5-baseline --size large --method iso_cts"
+  },
+  {
+   "size": "large",
+   "method": "tsv_m",
+   "seed": 0,
+   "value": 1.4,
+   "selected": true,
+   "average": 87.83419726652893,
+   "per_task": {
+    "cola": 78.8111217641419,
+    "mnli": 86.16403464085583,
+    "mrpc": 87.00980392156863,
+    "qnli": 93.72139849899322,
+    "qqp": 85.580014840465,
+    "rte": 87.36462093862816,
+    "sst2": 95.41284403669725,
+    "stsb": 88.60973949088141
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method tsv_m"
+  },
+  {
+   "size": "large",
+   "method": "adamerging",
+   "seed": 0,
+   "average": 86.01164009400054,
+   "per_task": {
+    "cola": 77.18120805369128,
+    "mnli": 79.5618950585838,
+    "mrpc": 81.37254901960785,
+    "qnli": 93.6481786564159,
+    "qqp": 84.76873608706406,
+    "rte": 89.16967509025271,
+    "sst2": 94.95412844036697,
+    "stsb": 87.43675034602174
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method adamerging"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6929950730955288,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.018981997860675434,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.004853877763360123,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.003048139949577369,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.002693620799369392,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 88.9861073119702,
+   "per_task": {
+    "cola": 79.0987535953979,
+    "mnli": 88.35455934793683,
+    "mrpc": 87.99019607843137,
+    "qnli": 93.99597290865825,
+    "qqp": 86.96265149641356,
+    "rte": 89.53068592057761,
+    "sst2": 95.41284403669725,
+    "stsb": 90.54319511164883
+   },
+   "tables": [
+    "t5-large-tasks",
+    "t5-interpolation"
+   ],
+   "command": "if-merge t5 --size large --init iso_c"
+  },
+  {
+   "size": "large",
+   "method": "tsv_m",
+   "seed": 1,
+   "value": 1.2,
+   "selected": true,
+   "average": 88.00828472109917,
+   "per_task": {
+    "cola": 78.42761265580057,
+    "mnli": 87.72287315333674,
+    "mrpc": 87.25490196078431,
+    "qnli": 93.73970345963757,
+    "qqp": 85.78778135048232,
+    "rte": 87.00361010830325,
+    "sst2": 95.29816513761467,
+    "stsb": 88.831629942834
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method tsv_m --seed 1"
+  },
+  {
+   "size": "large",
+   "method": "adamerging",
+   "seed": 1,
+   "average": 86.10248209023186,
+   "per_task": {
+    "cola": 76.98945349952061,
+    "mnli": 81.03922567498726,
+    "mrpc": 80.88235294117646,
+    "qnli": 93.59326377448288,
+    "qqp": 84.84293841207024,
+    "rte": 89.16967509025271,
+    "sst2": 94.95412844036697,
+    "stsb": 87.34881888899776
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method adamerging --seed 1"
+  },
+  {
+   "size": "large",
+   "method": "regmean",
+   "seed": 1,
+   "value": 0.9,
+   "selected": false,
+   "average": 88.25460425106795,
+   "per_task": {
+    "cola": 75.74304889741131,
+    "mnli": 88.6092715231788,
+    "mrpc": 86.27450980392157,
+    "qnli": 93.88614314479224,
+    "qqp": 86.75983180806332,
+    "rte": 88.8086642599278,
+    "sst2": 95.52752293577981,
+    "stsb": 90.42784163546862
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method regmean --seed 1 --value 0.9"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 1,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6936842405196311,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.01956317077504668,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.005161390598195734,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.003343038611869331,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.00288918886261049,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 88.9101860771656,
+   "per_task": {
+    "cola": 79.0987535953979,
+    "mnli": 88.37493632195618,
+    "mrpc": 87.99019607843137,
+    "qnli": 93.88614314479224,
+    "qqp": 86.98738560474895,
+    "rte": 88.8086642599278,
+    "sst2": 95.52752293577981,
+    "stsb": 90.6078866762905
+   },
+   "tables": [
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5 --size large --init iso_c --seed 1"
+  },
+  {
+   "size": "large",
+   "method": "tsv_m",
+   "seed": 2,
+   "value": 1.1,
+   "selected": true,
+   "average": 88.08684523507442,
+   "per_task": {
+    "cola": 78.52348993288591,
+    "mnli": 87.95720835455934,
+    "mrpc": 87.00980392156863,
+    "qnli": 93.8678381841479,
+    "qqp": 85.87187731882265,
+    "rte": 87.00361010830325,
+    "sst2": 95.41284403669725,
+    "stsb": 89.04809002361036
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method tsv_m --seed 2"
+  },
+  {
+   "size": "large",
+   "method": "adamerging",
+   "seed": 2,
+   "average": 86.2041471541525,
+   "per_task": {
+    "cola": 77.08533077660594,
+    "mnli": 79.50076413652573,
+    "mrpc": 81.12745098039215,
+    "qnli": 93.61156873512722,
+    "qqp": 84.7712094978976,
+    "rte": 89.53068592057761,
+    "sst2": 94.95412844036697,
+    "stsb": 89.05203874572682
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method adamerging --seed 2"
+  },
+  {
+   "size": "large",
+   "method": "regmean",
+   "seed": 2,
+   "value": 0.9,
+   "selected": false,
+   "average": 88.15477792732611,
+   "per_task": {
+    "cola": 75.74304889741131,
+    "mnli": 88.54814060112074,
+    "mrpc": 86.27450980392157,
+    "qnli": 93.94105802672524,
+    "qqp": 86.70541676972545,
+    "rte": 88.4476534296029,
+    "sst2": 95.18348623853211,
+    "stsb": 90.39490965156955
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5-baseline --size large --method regmean --seed 2 --value 0.9"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 2,
+   "initialization": "iso_c",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6987483472854081,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.019982866168667627,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.0049128932108944805,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.00362181872015549,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.0031913103551798466,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 89.15220545881583,
+   "per_task": {
+    "cola": 79.38638542665389,
+    "mnli": 88.24248599083036,
+    "mrpc": 89.2156862745098,
+    "qnli": 93.9227530660809,
+    "qqp": 86.95523126391294,
+    "rte": 89.53068592057761,
+    "sst2": 95.41284403669725,
+    "stsb": 90.55157169126396
+   },
+   "tables": [
+    "t5-large-tasks"
+   ],
+   "command": "if-merge t5 --size large --init iso_c --seed 2"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "wa",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.5370350950793608,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.011048916107303998,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.003886075346290631,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.002823661284293479,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.0025868925444126525,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 89.04084300283515,
+   "per_task": {
+    "cola": 79.19463087248322,
+    "mnli": 88.39531329597554,
+    "mrpc": 88.23529411764706,
+    "qnli": 93.99597290865825,
+    "qqp": 86.95770467474648,
+    "rte": 89.53068592057761,
+    "sst2": 95.41284403669725,
+    "stsb": 90.60429819589572
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5 --size large --init wa"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "ta",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.28749355078603694,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.007182280100646104,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.003782677129253396,
+     "step_size": 0.5
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.0028555617988462855,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.0026729374240618423,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 89.01996830967708,
+   "per_task": {
+    "cola": 79.0987535953979,
+    "mnli": 88.33418237391747,
+    "mrpc": 88.23529411764706,
+    "qnli": 93.99597290865825,
+    "qqp": 86.94533762057878,
+    "rte": 89.53068592057761,
+    "sst2": 95.41284403669725,
+    "stsb": 90.60667590394237
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5 --size large --init ta"
+  },
+  {
+   "size": "large",
+   "method": "if_merge",
+   "seed": 0,
+   "initialization": "iso_cts",
+   "rounds": [
+    {
+     "round": 0,
+     "holdout_kl": 0.6632932147529508,
+     "step_size": null
+    },
+    {
+     "round": 1,
+     "holdout_kl": 0.017152394696724534,
+     "step_size": 1.0
+    },
+    {
+     "round": 2,
+     "holdout_kl": 0.004589988124152133,
+     "step_size": 1.0
+    },
+    {
+     "round": 3,
+     "holdout_kl": 0.0030078182401241395,
+     "step_size": 1.0
+    },
+    {
+     "round": 4,
+     "holdout_kl": 0.0026713082318971467,
+     "step_size": 0.5
+    }
+   ],
+   "selected_round": 4,
+   "average": 89.0186337924421,
+   "per_task": {
+    "cola": 79.0987535953979,
+    "mnli": 88.39531329597554,
+    "mrpc": 88.23529411764706,
+    "qnli": 94.01427786930257,
+    "qqp": 86.95275785307939,
+    "rte": 89.53068592057761,
+    "sst2": 95.41284403669725,
+    "stsb": 90.50914365085947
+   },
+   "tables": [
+    "t5-large (main text)",
+    "t5-new-seeds"
+   ],
+   "command": "if-merge t5 --size large --init iso_cts"
+  }
+ ]
+}
