@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 license = "MIT"
 dependencies = [
   "numpy>=1.26",
-  "open-clip-torch>=2.24",
+  "open-clip-torch>=3.3,<4",  # 4.x replaces nn.MultiheadAttention in the visual tower
   "PyYAML>=6",
   "torch>=2.2",
 ]

@@ -120,6 +120,16 @@ def expose_linear_maps(visual: nn.Module, boundary: bool = True) -> nn.Module:
         for name, child in list(parent.named_children()):
             if isinstance(child, nn.MultiheadAttention):
                 setattr(parent, name, SplitAttention(child))
+    unsplit = [
+        name
+        for name, module in visual.named_modules()
+        if name.endswith(".attn") and not isinstance(module, SplitAttention)
+    ]
+    if unsplit:
+        raise RuntimeError(
+            f"{len(unsplit)} attention modules are not nn.MultiheadAttention and were not split "
+            "(e.g. " + unsplit[0] + "); this code expects open-clip-torch>=3.3,<4."
+        )
     if boundary:
         if isinstance(visual.conv1, nn.Conv2d):
             visual.conv1 = PatchLinear(visual.conv1)
