@@ -11,8 +11,9 @@
 
 <img src="figures/teaser.png" width="80%" alt="IF-Merge trajectories from ten merged models in prediction space">
 
-<sub>CLIP ViT-B/32, 8 tasks. Each curve is IF-Merge starting from a different merged model.<br>
-The floor is a 2-D embedding of the models' predictions; height and colour show accuracy.</sub>
+<sub>CLIP ViT-B/32 on eight tasks. Each curve follows IF-Merge from a different merged model.<br>
+The landscape and mean top-1 disagreement (45 model pairs per group) use 512 test images per task.<br>
+The accuracy ranges in the legend use the full test sets (seed 0).</sub>
 
 </div>
 
@@ -32,9 +33,11 @@ Averaging to Iso-CTS, and the endpoints land at nearly the same accuracy with mu
 - **What it costs.** 512 unlabeled images per task and about 10 minutes on one GPU for 8-task ViT-B/32.
   Each layer is a linear system solved by conjugate gradient.
 
-<p align="center"><img src="figures/method.svg" width="100%" alt="One round of IF-Merge: measure, fit, step, re-estimate"></p>
+<p align="center">
+  <a href="figures/method.svg"><img src="figures/method.svg" width="100%" alt="IF-Merge computes input and output metrics, fits shared weights with preconditioned conjugate gradient, and selects a whole-model step using held-out KL before remeasuring."></a>
+</p>
 
-For each weight matrix $W_\ell$, with expert weights $W_{t,\ell}$, the fit in step 2 is
+For each weight matrix $\ell$, IF-Merge fits a shared candidate $X_\ell$ to the expert weights $W_{t,\ell}$ using the two metrics.
 
 ```math
 X_\ell=\arg\min_X \sum_t \big\lVert A_{t,\ell}^{1/2}\,(X-W_{t,\ell})\,G_{t,\ell}^{1/2}\big\rVert_F^2
